@@ -1,0 +1,16 @@
+export { default as DockerIcon } from "./Docker";
+export { default as FigmaIcon } from "./Figma";
+export { default as GitIcon } from "./Git";
+export { default as GithubIcon } from "./Github";
+export { default as JavaIcon } from "./Java";
+export { default as NextJsIcon } from "./Nextjs";
+export { default as PostgresIcon } from "./Postgres";
+export { default as PostmanIcon } from "./Postman";
+export { default as SpringBootIcon } from "./SpringBoot";
+export { default as MaterialUIIcon } from "./MaterialUI";
+export { default as JavaScriptIcon } from "./JavaScript";
+export { default as VueJSIcon } from "./VueJS";
+export { default as NginxIcon } from "./Nginx";
+export { default as RedisIcon } from "./Redis";
+export { default as ReactIcon } from "./React";
+export { default as TailwindIcon } from "./Tailwind";
