@@ -37,14 +37,13 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
-            type: "spring" as const,
-            stiffness: 90,
-            damping: 14,
+            duration: 0.5,
+            ease: "easeOut" as const
         }
     }
 };

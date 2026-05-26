@@ -112,7 +112,7 @@ export default function Offer() {
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5 }}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "40px" }}
             >
@@ -132,7 +132,7 @@ export default function Offer() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 style={{ width: "1440px", maxWidth: "100%" }}
             >
                 <Grid container spacing={3} sx={{ width: "100%", position: "relative", zIndex: 1 }}>

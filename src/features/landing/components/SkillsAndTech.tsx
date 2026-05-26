@@ -83,9 +83,8 @@ const columnVariants = {
         opacity: 1,
         y: 0,
         transition: {
-            type: "spring" as const,
-            stiffness: 80,
-            damping: 15,
+            duration: 0.5,
+            ease: "easeOut" as const
         }
     }
 };
@@ -98,7 +97,7 @@ export default function SkillsAndTech() {
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5 }}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "40px" }}
             >
@@ -118,7 +117,7 @@ export default function SkillsAndTech() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 style={{ width: "1440px", maxWidth: "100%" }}
             >
                 <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" }, alignItems: "flex-start", gap: 3, position: "relative", zIndex: 1 }}>

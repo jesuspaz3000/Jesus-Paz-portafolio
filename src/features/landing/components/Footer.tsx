@@ -32,19 +32,19 @@ export default function Footer() {
                 }}
             >
                 <Box sx={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: { xs: "1fr", md: "1.2fr 1fr 1fr" }, gap: 4, pb: 4 }}>
-                    <Box>
+                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", md: "flex-start" }, textAlign: { xs: "center", md: "left" } }}>
                         <Typography sx={{ fontSize: 30, fontWeight: 800, mb: 1 }}>
                             Jesús Miguel Paz Llave
                         </Typography>
-                        <Typography sx={{ color: "secondary.main", maxWidth: 420, lineHeight: 1.8 }}>
+                        <Typography sx={{ color: "secondary.main", maxWidth: 420, lineHeight: 1.8, mx: { xs: "auto", md: 0 } }}>
                             Desarrollador Web Full Stack enfocado en interfaces responsivas, backend con Spring Boot y código limpio, mantenible y escalable.
                         </Typography>
                     </Box>
-                    <Box>
+                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", md: "flex-start" } }}>
                         <Typography sx={{ fontWeight: 800, mb: 2 }}>
                             Navegación
                         </Typography>
-                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1.2 }}>
+                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", md: "flex-start" }, gap: 1.2 }}>
                             {footerLinks.map((link) => (
                                 <Box
                                     key={link.label}
@@ -56,7 +56,7 @@ export default function Footer() {
                                         transition: "color 0.2s ease, transform 0.2s ease",
                                         "&:hover": {
                                             color: "#63ff5b",
-                                            transform: "translateX(4px)",
+                                            transform: { xs: "scale(1.05)", md: "translateX(4px)" },
                                         },
                                     }}
                                 >
@@ -65,11 +65,11 @@ export default function Footer() {
                             ))}
                         </Box>
                     </Box>
-                    <Box>
+                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", md: "flex-start" } }}>
                         <Typography sx={{ fontWeight: 800, mb: 2 }}>
                             Redes
                         </Typography>
-                        <Box sx={{ display: "flex", gap: 1.5 }}>
+                        <Box sx={{ display: "flex", gap: 1.5, justifyContent: { xs: "center", md: "flex-start" } }}>
                             {socialLinks.map(({ label, href, icon: Icon }) => (
                                 <Box
                                     key={label}
@@ -114,7 +114,7 @@ export default function Footer() {
                         flexDirection: { xs: "column", sm: "row" },
                     }}
                 >
-                    <Typography sx={{ color: "secondary.main", fontSize: 14 }}>
+                    <Typography sx={{ color: "secondary.main", fontSize: 14, textAlign: { xs: "center", sm: "left" } }}>
                         © {new Date().getFullYear()} Jesús Miguel Paz Llave. Todos los derechos reservados.
                     </Typography>
                     <Box

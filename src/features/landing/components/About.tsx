@@ -58,9 +58,8 @@ const textColumnVariants = {
         opacity: 1,
         x: 0,
         transition: {
-            type: "spring" as const,
-            stiffness: 80,
-            damping: 15,
+            duration: 0.5,
+            ease: "easeOut" as const
         }
     }
 };
@@ -70,21 +69,19 @@ const cardContainerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.12,
+            staggerChildren: 0.06,
         }
     }
 };
 
 const cardVariants = {
-    hidden: { opacity: 0, y: 35, scale: 0.97 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
         opacity: 1,
         y: 0,
-        scale: 1,
         transition: {
-            type: "spring" as const,
-            stiffness: 90,
-            damping: 13,
+            duration: 0.35,
+            ease: "easeOut" as const
         }
     }
 };
@@ -107,7 +104,7 @@ export default function About() {
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5 }}
                 style={{ width: "1440px", maxWidth: "100%", marginBottom: "16px" }}
             >
@@ -123,7 +120,7 @@ export default function About() {
                     variants={textColumnVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-20px" }}
                 >
                     <Typography sx={{ mb: 3, fontSize: { xs: 38, md: 64 }, lineHeight: 1.05, maxWidth: 720 }}>
                         Creando experiencias digitales que importan
@@ -153,7 +150,9 @@ export default function About() {
                     </Grid>
                     <Button
                         variant="contained"
-                        href="#contact"
+                        href="/curriculum/cv-jesus-paz.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         startIcon={<DownloadIcon />}
                         sx={{
                             mt: 5,
@@ -177,7 +176,7 @@ export default function About() {
                     variants={cardContainerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-30px" }}
                     style={{ display: "flex", flexDirection: "column", gap: "20px", position: "relative" }}
                 >
                     <Grid container spacing={2.5}>

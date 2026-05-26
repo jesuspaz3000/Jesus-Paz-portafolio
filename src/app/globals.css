@@ -19,3 +19,40 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Custom Scrollbar Styling (Premium Cybernetic Theme - High Specificity) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: #000000 !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: rgba(99, 255, 91, 0.25) !important;
+  border-radius: 10px !important;
+  border: 3px solid #000000 !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 255, 91, 0.6) !important;
+  box-shadow: 0 0 10px rgba(99, 255, 91, 0.5) !important;
+}
+
+/* Firefox support */
+html,
+body,
+* {
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(99, 255, 91, 0.25) #000000 !important;
+}

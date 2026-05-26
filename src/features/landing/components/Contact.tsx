@@ -112,7 +112,7 @@ export default function Contact() {
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5 }}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "40px" }}
             >
@@ -133,7 +133,7 @@ export default function Contact() {
                     variants={formVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-20px" }}
                     style={{ height: "100%", width: "100%" }}
                 >
                     <Box sx={decoratorRectangle}>
@@ -201,7 +201,7 @@ export default function Contact() {
                     variants={infoVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-20px" }}
                     style={{ height: "100%", width: "100%" }}
                 >
                     <Box sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column" }}>

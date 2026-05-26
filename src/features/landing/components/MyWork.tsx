@@ -54,9 +54,8 @@ const filterItemVariants = {
         scale: 1,
         y: 0,
         transition: {
-            type: "spring" as const,
-            stiffness: 110,
-            damping: 12,
+            duration: 0.25,
+            ease: "easeOut" as const
         }
     }
 };
@@ -165,7 +164,7 @@ export default function MyWork() {
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5 }}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "32px" }}
             >
@@ -185,7 +184,7 @@ export default function MyWork() {
                 variants={filterContainerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "12px", flexWrap: "wrap", marginBottom: "32px", width: "100%", zIndex: 1, position: "relative" }}
             >
                 {filters.map((filter) => {
@@ -224,7 +223,7 @@ export default function MyWork() {
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                 style={{ width: "1440px", maxWidth: "100%" }}
             >
