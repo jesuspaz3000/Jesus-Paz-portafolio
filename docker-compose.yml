@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  portfolio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    env_file:
+      - .env.local
