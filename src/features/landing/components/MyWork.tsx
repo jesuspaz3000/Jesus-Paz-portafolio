@@ -4,6 +4,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import LockIcon from "@mui/icons-material/Lock";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { Box, Tooltip, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -36,6 +37,10 @@ interface Project {
     logoFullSize?: boolean;
     demoTooltip?: string;
     githubTooltip?: string;
+    credentials?: {
+        user: string;
+        pass: string;
+    };
 }
 
 const filterContainerVariants = {
@@ -116,6 +121,12 @@ export default function MyWork() {
             metric: "Full-Stack: JWT, PostgreSQL & Redis",
             gradient: "#ffffff",
             githubUrl: "https://github.com/jesuspaz3000/fullstack-ecommerce-app.git",
+            demoUrl: "https://tienda.yisusdynamics.cloud/",
+            demoTooltip: "Demo: admin@admin.com / qwerty.123",
+            credentials: {
+                user: "admin@admin.com",
+                pass: "qwerty.123",
+            },
             logo: "/logo/logo-jhemar.png",
             logoFullSize: true,
             noGrid: true,
@@ -329,19 +340,39 @@ export default function MyWork() {
                                         <Typography sx={{ fontSize: 22, fontWeight: 800, minHeight: 54, marginBottom: 1, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                                             {project.name}
                                         </Typography>
-                                        <Typography sx={{ color: "secondary.main", minHeight: 125, marginBottom: 2, lineHeight: 1.7 }}>
+                                        <Typography sx={{ color: "secondary.main", marginBottom: 2, lineHeight: 1.7, whiteSpace: "pre-line" }}>
                                             {project.description}
                                         </Typography>
-                                        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, marginBottom: 2 }}>
-                                            {project.tags.map((tag) => (
-                                                <Box key={tag} sx={{ borderRadius: 10, color: "#63ff5b", fontSize: 12, fontWeight: 700, paddingX: 1.5, paddingY: 0.75, backgroundColor: "rgba(57, 255, 20, 0.12)" }}>
-                                                    {tag}
+
+                                        {project.credentials && (
+                                            <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5, mt: 1.5, mb: 2 }}>
+                                                <Box sx={{ display: "flex", alignItems: "center", gap: 0.75, color: "#63ff5b" }}>
+                                                    <VpnKeyIcon sx={{ fontSize: 18 }} />
+                                                    <Typography sx={{ fontSize: 16, fontWeight: 700, color: "primary.main" }}>
+                                                        Acceso Demo:
+                                                    </Typography>
                                                 </Box>
-                                            ))}
+                                                <Typography sx={{ color: "secondary.main", fontSize: 16, lineHeight: 1.7 }}>
+                                                    • Usuario: <strong>{project.credentials.user}</strong>
+                                                </Typography>
+                                                <Typography sx={{ color: "secondary.main", fontSize: 16, lineHeight: 1.7 }}>
+                                                    • Clave: <strong>{project.credentials.pass}</strong>
+                                                </Typography>
+                                            </Box>
+                                        )}
+
+                                        <Box sx={{ mt: "auto", display: "flex", flexDirection: "column", gap: 2 }}>
+                                            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                                                {project.tags.map((tag) => (
+                                                    <Box key={tag} sx={{ borderRadius: 10, color: "#63ff5b", fontSize: 12, fontWeight: 700, paddingX: 1.5, paddingY: 0.75, backgroundColor: "rgba(57, 255, 20, 0.12)" }}>
+                                                        {tag}
+                                                    </Box>
+                                                ))}
+                                            </Box>
+                                            <Typography sx={{ color: "#63ff5b", fontSize: 14, fontWeight: 700 }}>
+                                                {project.metric}
+                                            </Typography>
                                         </Box>
-                                        <Typography sx={{ color: "#63ff5b", fontSize: 14, fontWeight: 700, mt: "auto" }}>
-                                            {project.metric}
-                                        </Typography>
                                     </Box>
                                 </Box>
                             </SwiperSlide>

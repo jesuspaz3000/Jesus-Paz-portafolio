@@ -68,39 +68,79 @@ export default function Contact() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [messageError, setMessageError] = useState("");
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        
+        // Resetear errores previos
+        setNameError("");
+        setEmailError("");
+        setMessageError("");
         setAlert(null);
 
+        // Validaciones locales antes de mandar al servidor
+        let hasError = false;
+        if (!name.trim()) {
+            setNameError("El nombre es obligatorio.");
+            hasError = true;
+        }
+        if (!email.trim()) {
+            setEmailError("El correo electrónico es obligatorio.");
+            hasError = true;
+        } else {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.trim())) {
+                setEmailError("El formato de correo electrónico no es válido.");
+                hasError = true;
+            }
+        }
+        if (!message.trim()) {
+            setMessageError("El mensaje no puede estar vacío.");
+            hasError = true;
+        }
+
+        if (hasError) return;
+
+        setLoading(true);
+
         try {
-            // Crear FormData y agregar los campos
+            // Crear FormData y agregar los campos limpios
             const formData = new FormData();
-            formData.append("name", name);
-            formData.append("email", email);
-            formData.append("message", message);
+            formData.append("name", name.trim());
+            formData.append("email", email.trim());
+            formData.append("message", message.trim());
 
-            // Enviar el FormData completo
-            await sendEmail(formData);
+            // Enviar el FormData al Server Action
+            const result = await sendEmail(formData);
 
-            // Mostrar éxito
-            setAlert({
-                type: "success",
-                message: "¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.",
-            });
+            if (result.success) {
+                // Mostrar éxito
+                setAlert({
+                    type: "success",
+                    message: "¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.",
+                });
 
-            // Limpiar el formulario después de enviar
-            setName("");
-            setEmail("");
-            setMessage("");
+                // Limpiar el formulario después de enviar
+                setName("");
+                setEmail("");
+                setMessage("");
+            } else {
+                // Mostrar error devuelto por la API o servidor
+                setAlert({
+                    type: "error",
+                    message: result.error || "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+                });
+            }
         } catch (error) {
             console.error("Error sending email:", error);
             setAlert({
                 type: "error",
-                message: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+                message: "Hubo un problema inesperado al enviar el mensaje. Por favor, inténtalo de nuevo.",
             });
         } finally {
             setLoading(false);
@@ -157,8 +197,36 @@ export default function Contact() {
                                 {alert.message}
                             </Alert>
                         )}
-                        <TextField name="name" label="Nombre" placeholder="Tu nombre" fullWidth required disabled={loading} sx={fieldStyles} value={name} onChange={(e) => setName(e.target.value)} />
-                        <TextField name="email" label="Correo" placeholder="tu.correo@ejemplo.com" type="email" fullWidth required disabled={loading} sx={fieldStyles} value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <TextField 
+                            name="name" 
+                            label="Nombre" 
+                            placeholder="Tu nombre" 
+                            fullWidth 
+                            disabled={loading} 
+                            sx={fieldStyles} 
+                            value={name} 
+                            onChange={(e) => {
+                                setName(e.target.value);
+                                if (nameError) setNameError("");
+                            }}
+                            error={Boolean(nameError)}
+                            helperText={nameError}
+                        />
+                        <TextField 
+                            name="email" 
+                            label="Correo" 
+                            placeholder="tu.correo@ejemplo.com" 
+                            fullWidth 
+                            disabled={loading} 
+                            sx={fieldStyles} 
+                            value={email} 
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                if (emailError) setEmailError("");
+                            }}
+                            error={Boolean(emailError)}
+                            helperText={emailError}
+                        />
                         <TextField
                             name="message"
                             label="Mensaje"
@@ -166,7 +234,6 @@ export default function Contact() {
                             multiline
                             minRows={6}
                             fullWidth
-                            required
                             disabled={loading}
                             sx={{
                                 ...fieldStyles,
@@ -183,7 +250,12 @@ export default function Contact() {
                                 }
                             }}
                             value={message}
-                            onChange={(e) => setMessage(e.target.value)}
+                            onChange={(e) => {
+                                setMessage(e.target.value);
+                                if (messageError) setMessageError("");
+                            }}
+                            error={Boolean(messageError)}
+                            helperText={messageError}
                         />
                         <Button
                             type="submit"
