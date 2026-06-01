@@ -122,7 +122,7 @@ export default function MyWork() {
             gradient: "#ffffff",
             githubUrl: "https://github.com/jesuspaz3000/fullstack-ecommerce-app.git",
             demoUrl: "https://tienda.yisusdynamics.cloud/",
-            demoTooltip: "Demo: admin@admin.com / qwerty.123",
+            demoTooltip: "Demo: admindemo@gmail.com / qwerty.123",
             credentials: {
                 user: "admin@admin.com",
                 pass: "qwerty.123",
@@ -179,9 +179,9 @@ export default function MyWork() {
                 transition={{ duration: 0.5 }}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "32px" }}
             >
-                <SectionChip 
-                    icon={<AutoAwesomeIcon />} 
-                    label="Mi trabajo" 
+                <SectionChip
+                    icon={<AutoAwesomeIcon />}
+                    label="Mi trabajo"
                 />
                 <Typography sx={{ fontSize: { xs: 38, md: 64 }, lineHeight: 1.05, mt: 2, textAlign: "center" }}>
                     Proyectos destacados
