@@ -37,10 +37,7 @@ interface Project {
     logoFullSize?: boolean;
     demoTooltip?: string;
     githubTooltip?: string;
-    credentials?: {
-        user: string;
-        pass: string;
-    };
+    credentialsRequest?: boolean;
 }
 
 const filterContainerVariants = {
@@ -122,11 +119,8 @@ export default function MyWork() {
             gradient: "#ffffff",
             githubUrl: "https://github.com/jesuspaz3000/fullstack-ecommerce-app.git",
             demoUrl: "https://tienda.yisusdynamics.cloud/",
-            demoTooltip: "Demo: admindemo@gmail.com / qwerty.123",
-            credentials: {
-                user: "admindemo@admin.com",
-                pass: "qwerty.123",
-            },
+            demoTooltip: "Solicitar credenciales para acceder a la demo",
+            credentialsRequest: true,
             logo: "/logo/logo-jhemar.png",
             logoFullSize: true,
             noGrid: true,
@@ -344,7 +338,7 @@ export default function MyWork() {
                                             {project.description}
                                         </Typography>
 
-                                        {project.credentials && (
+                                        {project.credentialsRequest && (
                                             <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5, mt: 1.5, mb: 2 }}>
                                                 <Box sx={{ display: "flex", alignItems: "center", gap: 0.75, color: "#63ff5b" }}>
                                                     <VpnKeyIcon sx={{ fontSize: 18 }} />
@@ -352,11 +346,8 @@ export default function MyWork() {
                                                         Acceso Demo:
                                                     </Typography>
                                                 </Box>
-                                                <Typography sx={{ color: "secondary.main", fontSize: 16, lineHeight: 1.7 }}>
-                                                    • Usuario: <strong>{project.credentials.user}</strong>
-                                                </Typography>
-                                                <Typography sx={{ color: "secondary.main", fontSize: 16, lineHeight: 1.7 }}>
-                                                    • Clave: <strong>{project.credentials.pass}</strong>
+                                                <Typography sx={{ color: "secondary.main", fontSize: 14, lineHeight: 1.6, fontStyle: "italic" }}>
+                                                    Demo disponible bajo solicitud. Por favor, solicita las credenciales de acceso para explorar el sistema.
                                                 </Typography>
                                             </Box>
                                         )}
