@@ -124,7 +124,7 @@ export default function MyWork() {
             demoUrl: "https://tienda.yisusdynamics.cloud/",
             demoTooltip: "Demo: admindemo@gmail.com / qwerty.123",
             credentials: {
-                user: "admin@admin.com",
+                user: "admindemo@admin.com",
                 pass: "qwerty.123",
             },
             logo: "/logo/logo-jhemar.png",
