@@ -116,7 +116,7 @@ export default function Hero() {
 
                     <motion.div variants={itemVariants}>
                         <Typography sx={{ fontSize: { xs: 16, md: 18 }, lineHeight: 1.8, color: "secondary.main", maxWidth: 680 }}>
-                            Desarrollador Web Full Stack especializado en crear interfaces responsivas y funcionales con React, Next.js y Vue.js. Experiencia en backend con Spring Boot y enfoque en código limpio, mantenible y escalable.
+                            Desarrollador Web Full Stack con experiencia en el desarrollo de interfaces responsivas y funcionales con React y Next.js. Experiencia en backend con Spring Boot y enfoque en código limpio, mantenible y escalable.
                         </Typography>
                     </motion.div>
 

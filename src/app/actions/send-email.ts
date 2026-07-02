@@ -29,9 +29,9 @@ export async function sendEmail(formData: FormData) {
         // 2. Verificar que la API Key esté configurada
         if (!process.env.RESEND_API_KEY) {
             console.error("Resend API Key is missing in environment variables.");
-            return { 
-                success: false, 
-                error: "El servicio de mensajería no está configurado correctamente en el servidor. Por favor, contacta directamente a veyito30000@gmail.com." 
+            return {
+                success: false,
+                error: "El servicio de mensajería no está configurado correctamente en el servidor. Por favor, contacta directamente a veyito30000@gmail.com."
             };
         }
 
@@ -55,18 +55,18 @@ export async function sendEmail(formData: FormData) {
         // 4. Resend devuelve { data, error }. Si hay error, lo reportamos.
         if (response.error) {
             console.error("Resend API Error:", response.error);
-            return { 
-                success: false, 
-                error: `Error del servicio de mensajería: ${response.error.message}` 
+            return {
+                success: false,
+                error: `Error del servicio de mensajería: ${response.error.message}`
             };
         }
 
         return { success: true };
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.error("Unexpected error in sendEmail action:", err);
-        return { 
-            success: false, 
-            error: err.message || "Ocurrió un error inesperado al enviar el mensaje." 
+        return {
+            success: false,
+            error: (err as Error).message || "Ocurrió un error inesperado al enviar el mensaje."
         };
     }
 }

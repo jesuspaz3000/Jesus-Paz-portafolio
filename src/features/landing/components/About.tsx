@@ -5,7 +5,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import DownloadIcon from "@mui/icons-material/Download";
 import SpeedIcon from "@mui/icons-material/Speed";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { highlightsStyles, iconStyles, chipStyles } from "@/shared/mui/AboutSx";
+import { highlightsStyles, iconStyles } from "@/shared/mui/AboutSx";
 import { motion } from "framer-motion";
 import SectionChip from "@/shared/components/SectionChip";
 
@@ -108,10 +108,10 @@ export default function About() {
                 transition={{ duration: 0.5 }}
                 style={{ width: "1440px", maxWidth: "100%", marginBottom: "16px" }}
             >
-                <SectionChip 
-                    icon={<CodeIcon />} 
-                    label="Desarrollador Full Stack" 
-                    rightIcon={<AutoAwesomeIcon />} 
+                <SectionChip
+                    icon={<CodeIcon />}
+                    label="Desarrollador Full Stack"
+                    rightIcon={<AutoAwesomeIcon />}
                 />
             </motion.div>
 
