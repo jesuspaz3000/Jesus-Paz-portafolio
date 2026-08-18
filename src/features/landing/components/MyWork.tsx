@@ -5,40 +5,22 @@ import LaunchIcon from "@mui/icons-material/Launch";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import LockIcon from "@mui/icons-material/Lock";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Tooltip, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import SectionChip from "@/shared/components/SectionChip";
+import { projects, type ProjectType } from "@/features/landing/data/projects";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { swiperContainerStyles, projectCardStyles, getCardHeaderStyles, tooltipStyles } from "@/shared/mui/MyWorkSx";
-
-type ProjectType = "ui" | "full-stack";
-
-interface Project {
-    name: string;
-    description: string;
-    type: ProjectType;
-    category: string;
-    tags: string[];
-    metric: string;
-    gradient: string;
-    logo?: string;
-    noGrid?: boolean;
-    demoUrl?: string;
-    githubUrl?: string;
-    isPrivate?: boolean;
-    logoFullSize?: boolean;
-    demoTooltip?: string;
-    githubTooltip?: string;
-    credentialsRequest?: boolean;
-}
 
 const filterContainerVariants = {
     hidden: {},
@@ -69,88 +51,6 @@ export default function MyWork() {
         { label: "Todos", value: "all" },
         { label: "Frontend", value: "ui" },
         { label: "Full stack", value: "full-stack" },
-    ];
-
-    const projects: Project[] = [
-        {
-            name: "Smartmuni Software",
-            type: "ui",
-            category: "Frontend",
-            description: "Evolución de la plataforma de gobierno digital Smartmuni, optimizando la estabilidad del sistema mediante corrección de errores críticos e implementación de funcionalidades a medida bajo demanda de municipalidades.",
-            tags: ["Vue.js", "Quasar", "Frontend"],
-            metric: "Mantenimiento & Nuevos Módulos",
-            gradient: "#1615B1",
-            logo: "/logo/smart-muni.svg",
-            noGrid: true,
-            isPrivate: true,
-        },
-        {
-            name: "Sistema de Tracking Turístico NextTrip",
-            type: "ui",
-            category: "Frontend",
-            description: "Plataforma web para la gestión integral y tracking en tiempo real de itinerarios turísticos, brindando una navegación fluida al usuario final.",
-            tags: ["Next.js", "App Router", "Django APIs"],
-            metric: "Frontend & Integración de APIs",
-            gradient: "#263238",
-            logo: "/logo/next-trip.svg",
-            noGrid: true,
-            demoUrl: "https://nexttriptech.com/",
-            demoTooltip: "Ver landing page (Dashboard privado)",
-        },
-        {
-            name: "Sistema de Gestión de Veterinarias",
-            type: "full-stack",
-            category: "Full stack",
-            description: "ERP desarrollado como proyecto personal para clínicas veterinarias, el cual centraliza de forma segura el control de citas, historiales médicos y facturación.",
-            tags: ["Next.js", "Spring Boot", "Proyecto Personal"],
-            metric: "Desarrollo Full-Stack & Control de Roles (RBAC)",
-            gradient: "#ffffff",
-            logo: "/logo/logo-gestion-veterinaria.png",
-            noGrid: true,
-            logoFullSize: true,
-        },
-        {
-            name: "Administrador de Tienda / E-commerce",
-            type: "full-stack",
-            category: "Full stack",
-            description: "Panel administrativo comercial que automatiza el control de stock, cierres de caja diaria y la generación de reportes de ventas integrados con gráficos interactivos.",
-            tags: ["Next.js", "Spring Boot", "PostgreSQL"],
-            metric: "Full-Stack: JWT, PostgreSQL & Redis",
-            gradient: "#ffffff",
-            githubUrl: "https://github.com/jesuspaz3000/fullstack-ecommerce-app.git",
-            demoUrl: "https://tienda.yisusdynamics.cloud/",
-            demoTooltip: "Solicitar credenciales para acceder a la demo",
-            credentialsRequest: true,
-            logo: "/logo/logo-jhemar.png",
-            logoFullSize: true,
-            noGrid: true,
-        },
-        {
-            name: "Sistema de Gestión de Pagos",
-            type: "ui",
-            category: "Frontend",
-            description: "Desarrollo frontend de una plataforma web para la gestión de recaudación de servicios públicos, realizada a través de la consultora Beryllium para su cliente final en el sector de saneamiento.",
-            tags: ["Next.js", "Material UI", "Gestión"],
-            metric: "UI & Flujos de Recaudación",
-            gradient: "#ffffff",
-            logo: "/logo/logo-sedapar.png",
-            logoFullSize: true,
-            noGrid: true,
-            isPrivate: true
-        },
-        {
-            name: "Migración Gestión de Molinos",
-            type: "ui",
-            category: "Frontend",
-            description: "Modernización y refactorización frontend de un sistema heredado de control y monitoreo de producción, desarrollada a través de la consultora Beryllium para su cliente final en el sector agroindustrial.",
-            tags: ["Vue.js", "Next.js", "Migración"],
-            metric: "Migración Vue 2 a Next.js (Rendimiento)",
-            gradient: "#006400",
-            logo: "/logo/logo-molinos.png",
-            logoFullSize: true,
-            noGrid: true,
-            isPrivate: true
-        },
     ];
 
     const handleFilterChange = (filter: ProjectType | "all") => {
@@ -259,7 +159,7 @@ export default function MyWork() {
                         }}
                     >
                         {filteredProjects.map((project) => (
-                            <SwiperSlide key={project.name}>
+                            <SwiperSlide key={project.slug}>
                                 <Box sx={projectCardStyles}>
                                     <Box
                                         sx={getCardHeaderStyles(project.gradient, project.noGrid)}
@@ -363,6 +263,65 @@ export default function MyWork() {
                                             <Typography sx={{ color: "#63ff5b", fontSize: 14, fontWeight: 700 }}>
                                                 {project.metric}
                                             </Typography>
+                                            {project.hasDetailPage !== false ? (
+                                                <Box
+                                                    component={Link}
+                                                    href={`/proyectos/${project.slug}`}
+                                                    sx={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        gap: 1,
+                                                        width: "100%",
+                                                        py: 1.25,
+                                                        borderRadius: 10,
+                                                        textDecoration: "none",
+                                                        color: "#63ff5b",
+                                                        border: "1px solid rgba(99, 255, 91, 0.35)",
+                                                        backgroundColor: "rgba(57, 255, 20, 0.06)",
+                                                        fontWeight: 700,
+                                                        fontSize: 14,
+                                                        transition: "color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+                                                        "&:hover": {
+                                                            color: "background.default",
+                                                            backgroundColor: "#63ff5b",
+                                                            borderColor: "#63ff5b",
+                                                            transform: "translateY(-2px)",
+                                                        },
+                                                        "& svg": {
+                                                            transition: "transform 0.2s ease",
+                                                        },
+                                                        "&:hover svg": {
+                                                            transform: "translateX(3px)",
+                                                        },
+                                                    }}
+                                                >
+                                                    Ver más
+                                                    <ArrowForwardIcon fontSize="small" />
+                                                </Box>
+                                            ) : project.comingSoon ? (
+                                                <Tooltip title="Página de detalle disponible próximamente" placement="top" arrow slotProps={tooltipStyles}>
+                                                    <Box
+                                                        sx={{
+                                                            display: "flex",
+                                                            alignItems: "center",
+                                                            justifyContent: "center",
+                                                            gap: 1,
+                                                            width: "100%",
+                                                            py: 1.25,
+                                                            borderRadius: 10,
+                                                            color: "rgba(255, 255, 255, 0.3)",
+                                                            border: "1px solid rgba(255, 255, 255, 0.08)",
+                                                            backgroundColor: "rgba(255, 255, 255, 0.03)",
+                                                            fontWeight: 700,
+                                                            fontSize: 14,
+                                                            cursor: "not-allowed",
+                                                        }}
+                                                    >
+                                                        Próximamente
+                                                    </Box>
+                                                </Tooltip>
+                                            ) : null}
                                         </Box>
                                     </Box>
                                 </Box>

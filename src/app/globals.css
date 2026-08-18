@@ -2,6 +2,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Reserva el espacio de la scrollbar siempre, se muestre o no, para que
+     el ancho de la página no cambie cuando un Modal bloquea el scroll del
+     body (evita el salto/desplazamiento visible al abrir el lightbox). */
+  scrollbar-gutter: stable;
 }
 
 html,

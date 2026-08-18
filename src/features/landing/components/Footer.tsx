@@ -7,10 +7,10 @@ import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 
 const footerLinks = [
-    { label: "Sobre mí", href: "#about" },
-    { label: "Habilidades", href: "#skills" },
-    { label: "Proyectos", href: "#projects" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Sobre mí", href: "/#about" },
+    { label: "Habilidades", href: "/#skills" },
+    { label: "Proyectos", href: "/#projects" },
+    { label: "Contacto", href: "/#contact" },
 ];
 
 const socialLinks = [

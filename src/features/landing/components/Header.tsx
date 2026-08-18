@@ -9,11 +9,11 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-    { label: "Sobre mí", href: "#about" },
-    { label: "Habilidades", href: "#skills" },
-    { label: "Proyectos", href: "#projects" },
-    { label: "Servicios", href: "#services" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Sobre mí", href: "/#about" },
+    { label: "Habilidades", href: "/#skills" },
+    { label: "Proyectos", href: "/#projects" },
+    { label: "Servicios", href: "/#services" },
+    { label: "Contacto", href: "/#contact" },
 ];
 
 const menuVariants = {
@@ -55,9 +55,9 @@ export default function Header() {
 
     return (
         <>
-            <Box sx={{ px: 2, py: 2, display: "flex", justifyContent: "center", position: "fixed", width: "100%", top: 0, left: 0, zIndex: 1000, backgroundColor: "rgba(0, 0, 0, 0.62)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255, 255, 255, 0.06)" }}>
+            <Box className="mui-fixed" sx={{ px: 2, py: 2, display: "flex", justifyContent: "center", position: "fixed", width: "100%", top: 0, left: 0, zIndex: 1000, backgroundColor: "rgba(0, 0, 0, 0.62)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255, 255, 255, 0.06)" }}>
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 1440, width: "100%", gap: 2 }}>
-                    <Link href="#" style={{ textDecoration: "none" }}>
+                    <Link href="/"style={{ textDecoration: "none" }}>
                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "#63ff5b" }}>
                             <CodeIcon sx={{ fontSize: 22 }} />
                             <Typography sx={{ fontSize: { xs: 22, md: 26 }, fontWeight: 800 }}>
@@ -109,7 +109,7 @@ export default function Header() {
                         >
                             Ver CV
                         </Button>
-                        <Button href="#contact" sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 10, px: { xs: 2, md: 3 }, py: 1, color: "background.default", backgroundColor: "#f4fff1", fontWeight: 700, textTransform: "none", "&:hover": { backgroundColor: "#63ff5b" } }}>
+                        <Button href="/#contact" sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 10, px: { xs: 2, md: 3 }, py: 1, color: "background.default", backgroundColor: "#f4fff1", fontWeight: 700, textTransform: "none", "&:hover": { backgroundColor: "#63ff5b" } }}>
                             Contáctame
                         </Button>
                         <IconButton
@@ -155,7 +155,7 @@ export default function Header() {
                         }}
                     >
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", mb: 6 }}>
-                            <Link href="#" onClick={() => setIsOpen(false)} style={{ textDecoration: "none" }}>
+                            <Link href="/"onClick={() => setIsOpen(false)} style={{ textDecoration: "none" }}>
                                 <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "#63ff5b" }}>
                                     <CodeIcon sx={{ fontSize: 22 }} />
                                     <Typography sx={{ fontSize: 22, fontWeight: 800 }}>
@@ -237,7 +237,7 @@ export default function Header() {
                             </motion.div>
                             <motion.div variants={itemVariants} style={{ willChange: "transform" }}>
                                 <Button
-                                    href="#contact"
+                                    href="/#contact"
                                     onClick={() => setIsOpen(false)}
                                     sx={{
                                         borderRadius: 10,
