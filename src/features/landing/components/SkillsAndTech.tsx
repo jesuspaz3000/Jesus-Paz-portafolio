@@ -53,7 +53,6 @@ const skillCategories: SkillCategory[] = [
             { icon: <SpringBootIcon width={24} height={24} />, name: "Spring Boot" },
             { icon: <PostgresIcon width={24} height={24} />, name: "PostgreSQL" },
             { icon: <RedisIcon width={24} height={24} />, name: "Redis" },
-            { icon: <NginxIcon width={24} height={24} />, name: "Nginx" },
         ],
     },
     {
@@ -62,6 +61,7 @@ const skillCategories: SkillCategory[] = [
             { icon: <GitIcon width={24} height={24} />, name: "Git" },
             { icon: <GithubIcon width={24} height={24} />, name: "GitHub" },
             { icon: <DockerIcon width={24} height={24} />, name: "Docker" },
+            { icon: <NginxIcon width={24} height={24} />, name: "Nginx" },
             { icon: <PostmanIcon width={24} height={24} />, name: "Postman" },
             { icon: <FigmaIcon width={24} height={24} />, name: "Figma" },
         ],
